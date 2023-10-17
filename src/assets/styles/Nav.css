@@ -1,0 +1,35 @@
+.encabezadoSubtitulo{
+    font-weight: 300;
+    font-size: clamp(15px, 2em, 1vw);
+    margin-bottom: 0;
+}
+.encabezadoTitulo{
+    font-weight: 100;
+    font-size: clamp(35px, 5em, 2.5vw);
+    margin-bottom: 0;
+}
+.encabezado_nav ol{
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    padding-top: 3em;
+    row-gap: 15px;
+    width: fit-content;
+    list-style: none;
+}
+.encabezado_nav a{
+    text-decoration: none;
+    color: inherit;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 15px;
+}
+#Encabezado{
+    left: calc(var(--pad)*1);
+    top: calc(var(--pad)*1);
+    width: fit-content;
+    z-index: 5;
+    position: relative;
+    color: #fff;
+    font-family: Raleway;
+}

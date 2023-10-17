@@ -1,17 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import App from "assets/js/App.jsx";
+import App from "./App.jsx";
+import "./assets/styles/main.css"
 
 //Componentes
-import App from "./App";
-import Nav from "./Nav";
-import Contact from "../components/Contact";
+import Nav from "./assets/components/Nav";
+import Contact from "./assets/components/Contact";
+import Info from "./assets/components/Info.jsx"
+import NotFound from "./assets/components/NotFound";
 
 //Estilos
 import "bootstrap/dist/css/bootstrap.min.css";
-import "assets/css/style.css";
-import NotFound from "../components/NotFound";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -21,6 +21,7 @@ root.render(
             <Routes>
                 <Route path="/" element={<App />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/info" element={<Info />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </div>

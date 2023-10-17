@@ -1,0 +1,11 @@
+div{
+    background-color: var(--c-bg);
+    height: 100%;
+    width: 100%;
+}
+div.container{
+    margin: 2em;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+}
