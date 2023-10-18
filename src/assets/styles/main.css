@@ -1,46 +1,3 @@
-*, *:before, *:after{
-    box-sizing: inherit;
-    -webkit-user-select: inherit;
-    user-select: inherit;
-    -webkit-user-drag: inherit;
-    -webkit-tap-highlight-color: inherit;
-    backface-visibility: inherit;
-}
-* {
-    margin: 0;
-    padding: 0;
-}
-html {
-    line-height: 1;
-    box-sizing: border-box;
-    -webkit-user-select: none;
-    user-select: none;
-    -webkit-user-drag: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,0)
-}
-main,canvas {
-    display: block
-}
-h1,h2,h3,h4,h5,h6 {
-    font-weight: inherit;
-    font-size: inherit
-}
-a {
-    color: inherit;
-    text-decoration: none
-}
-ol,ul {
-    list-style: none
-}
-:root {
-    --pad: max(20px, 4vmin);
-    --c-text: hsl(0, 0%, 95%);
-    --c-bg: hsl(0, 0%, 5%);
-}
-html,body{
-    height: 100%;
-    overflow: hidden;
-}
 body{
     background-color: var(--c-bg);
     font-family: Raleway;
@@ -49,4 +6,15 @@ body{
     -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
+    animation: fadeInAnimation ease 5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+@keyframes fadeInAnimation {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
 }

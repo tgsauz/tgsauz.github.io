@@ -23,6 +23,12 @@
     font-family: inherit;
     font-weight: 700;
     font-size: 15px;
+    text-shadow: 0 0 0 transparent; /* Config inicial del glow */
+    transition: text-shadow 0.3s ease; /* Transición suave */
+
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
 }
 #Encabezado{
     left: calc(var(--pad)*1);
@@ -32,4 +38,15 @@
     position: relative;
     color: #fff;
     font-family: Raleway;
+}
+._texto:hover{
+    text-shadow: 0 0 5px #fff;
+}
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}  
+  .fade-in {
+    opacity: 1;
+    transition: opacity 0.5s ease;
 }

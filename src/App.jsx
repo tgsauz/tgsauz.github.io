@@ -1,17 +1,20 @@
-// Estilos
-import "./assets/styles/App.css";
-import "./assets/styles/Nav.css"
-import "./assets/styles/HomePage.css"
+import React from "react";
+import { Outlet, useLocation } from "react-router-dom";
 
-// Componentes
-import HomePage from "./assets/components/HomePage.jsx";
-import Nav from "./assets/components/Nav.jsx";
+// Estilos
+import "./global.css"
+import "./assets/styles/App.css";
+import "./assets/styles/Nav.css";
+import "./assets/styles/HomePage.css";
+import "./assets/styles/Info.css";
+import "./assets/styles/Contact.css";
 
 function App() {
+    const location = useLocation();
+    
     return(
         <>
-            <Nav/>
-            <HomePage/>
+            <Outlet /> {/* Aquí se mostrará el contenido de la página actual */}
         </>   
     )
 }

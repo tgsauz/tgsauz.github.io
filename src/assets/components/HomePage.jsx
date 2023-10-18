@@ -1,4 +1,3 @@
-
 const HomePage=()=>{
     return(
         <section className="pagina" data-page="Home">

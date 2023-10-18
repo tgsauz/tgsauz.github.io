@@ -1,0 +1,19 @@
+.instagram{
+    position: absolute;
+    bottom: calc(var(--pad)*2);
+    right: calc(var(--pad)*2);
+    text-decoration: none;
+    color: #fff;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 15px;
+    text-shadow: 0 0 0 transparent; /* Config inicial del glow */
+    transition: text-shadow 0.3s ease; /* Transición suave */
+
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+.instagram:hover{
+    text-shadow: 0 0 5px #fff;
+}
