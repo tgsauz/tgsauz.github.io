@@ -42,11 +42,3 @@
 ._texto:hover{
     text-shadow: 0 0 5px #fff;
 }
-.fade-out {
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}  
-  .fade-in {
-    opacity: 1;
-    transition: opacity 0.5s ease;
-}

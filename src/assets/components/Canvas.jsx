@@ -1,4 +1,4 @@
-const Canvas=()=>{
+const Canvas = () => {
     return (
         <>
             
