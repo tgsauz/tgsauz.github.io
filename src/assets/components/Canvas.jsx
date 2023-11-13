@@ -15,7 +15,7 @@ const Canvas = () => {
     const maxReturnDistance = 50;
     const attractFactor = 0.1;
     const returnFactor = 0.1;
-    const scaleFactor = 575;
+    const scaleFactor = 575; // IMPORTANTE
 
     const handleWindowResize = () => {
         const { clientWidth, clientHeight } = containerRef.current;
