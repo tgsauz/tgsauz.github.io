@@ -15,7 +15,7 @@ const Canvas = () => {
     const maxReturnDistance = 50;
     const attractFactor = 0.1;
     const returnFactor = 0.1;
-    const scaleFactor = 200;
+    const scaleFactor = 575;
 
     const handleWindowResize = () => {
         const { clientWidth, clientHeight } = containerRef.current;
@@ -43,14 +43,15 @@ const Canvas = () => {
         particles.forEach((particle) => {
             const distanceX = mouseX - particle.position.x;
             const distanceY = mouseY - particle.position.y;
-            let distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-    
             const attractionRadius = 200;
-            let alejamientoX = (particle.position.x - particle.initialPosition.x);
 
+            let alejamientoX = (particle.position.x - particle.initialPosition.x);
+            
             let alejamientoY = (particle.position.y - particle.initialPosition.y);
-    
-            if (distance < attractionRadius && (alejamientoX < 50 && alejamientoY < 50)) {
+
+            let distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+            
+            if (distance < attractionRadius) {
                 let normalDistanceX = distanceX / distance;
                 let normalDistanceY = distanceY / distance;
 
@@ -58,7 +59,7 @@ const Canvas = () => {
                 let force = attractFactor * (attractionRadius - distance);
                 particle.position.x += normalDistanceX * force;
                 particle.position.y += normalDistanceY * force;
-            } else if ((alejamientoX < 50 || alejamientoY < 50)) {
+            } else {
                 // Retorno a la posición inicial
                 particle.position.x += (particle.initialPosition.x - particle.position.x) * returnFactor;
                 particle.position.y += (particle.initialPosition.y - particle.position.y) * returnFactor;
@@ -71,8 +72,8 @@ const Canvas = () => {
     };  
 
     const createParticles = () => {
-        const particleCount = 500;
-        const particleGeometry = new THREE.CircleGeometry(1.3, 32);
+        const particleCount = 300;
+        const particleGeometry = new THREE.CircleGeometry(2, 32);
         const particleColor = colorTextW;
 
         particles.lenght = 0;
@@ -80,9 +81,9 @@ const Canvas = () => {
         for (let i = 0; i < particleCount; i++) {
             const material = new THREE.MeshBasicMaterial({ color: particleColor });
             const particle = new THREE.Mesh(particleGeometry, material);
-            particle.position.x = Math.random() * 1000 - 500;
-            particle.position.y = Math.random() * 1000 - 500;
-            particle.position.z = Math.random() * 1000 - 500;
+            particle.position.x = Math.random() * containerRef.current.clientWidth - containerRef.current.clientWidth / 2;
+            particle.position.y = Math.random() * containerRef.current.clientHeight - containerRef.current.clientHeight / 2;
+            particle.position.z = 0
             particle.initialPosition = { x: particle.position.x, y: particle.position.y };
             particles.push(particle);
             scene.add(particle);
@@ -100,7 +101,7 @@ const Canvas = () => {
         console.log("Container dimensions: ", clientWidth, clientHeight);
 
         camera = new THREE.PerspectiveCamera(75, aspect, 1, 10000);
-        camera.position.z = 1000;
+        camera.position.z = 750;
 
         renderer = new THREE.WebGLRenderer();
         renderer.setSize(clientWidth, clientHeight);
