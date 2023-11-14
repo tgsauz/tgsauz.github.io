@@ -1,12 +1,13 @@
-import React, { useEffect, useRef } from 'react';
-import * as THREE from 'three';
-import '../styles/Canvas.css';
+import React, { useEffect, useRef } from "react";
+import * as THREE from "three";
+
+import "../styles/Canvas.css";
 
 const Canvas = () => {
     const containerRef = useRef();
     const particles = [];
-    let mouseX = 100;
-    let mouseY = 100;
+    let mouseX = 0;
+    let mouseY = 0;
     let camera, scene, renderer;
     const colorBgB = 0xD0D0D;
     const colorTextW = 0xF2F2F2;
@@ -15,7 +16,6 @@ const Canvas = () => {
     const maxReturnDistance = 50;
     const attractFactor = 0.1;
     const returnFactor = 0.1;
-    const scaleFactor = 575; // IMPORTANTE
 
     const handleWindowResize = () => {
         const { clientWidth, clientHeight } = containerRef.current;
@@ -27,27 +27,39 @@ const Canvas = () => {
             scene.remove(particle);
         });
         particles.length = 0;
-
+        
         createParticles();
+        console.log("Container dimensions: ", clientWidth, clientHeight);
     };
     
     const onMouseMove = (event) => {
+        const { clientWidth, clientHeight } = containerRef.current;
         const canvasRect = containerRef.current.getBoundingClientRect();
-        mouseX = (event.clientX - canvasRect.left - canvasRect.width / 2) / (canvasRect.width / 2) * scaleFactor;
-        mouseY = -(event.clientY - canvasRect.top - canvasRect.height / 2) / (canvasRect.height / 2) * scaleFactor;
 
+        const ratioX = clientWidth / clientHeight;
+
+        const ratioY = clientHeight / clientWidth;
+        //Falta ajustar la lectura del mouse para una ilustracion mejor
+        //mouseX = (event.clientX - canvasRect.left);
+        //mouseY = -(event.clientY - canvasRect.top) ;    
+
+        mouseX = (event.clientX - canvasRect.left - (clientWidth / 2));
+        mouseY = -(event.clientY - canvasRect.top - (clientHeight / 2));
+        console.log("RectX: ", canvasRect.left, clientWidth);
+        console.log("left-w: ", canvasRect.left - clientWidth);
+        console.log("RectY: ", canvasRect.top, clientHeight);
+        console.log("top-h: ", canvasRect.top - clientHeight);
+        console.log("RatioX: ", ratioX, "\nRatioY; ", ratioY);
+        
         console.log(mouseX, mouseY);
     };
     
     const animate = () => {
+
         particles.forEach((particle) => {
             const distanceX = mouseX - particle.position.x;
             const distanceY = mouseY - particle.position.y;
             const attractionRadius = 200;
-
-            let alejamientoX = (particle.position.x - particle.initialPosition.x);
-            
-            let alejamientoY = (particle.position.y - particle.initialPosition.y);
 
             let distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
             
@@ -72,11 +84,11 @@ const Canvas = () => {
     };  
 
     const createParticles = () => {
-        const particleCount = 300;
+        const particleCount = 400;
         const particleGeometry = new THREE.CircleGeometry(2, 32);
         const particleColor = colorTextW;
 
-        particles.lenght = 0;
+        particles.length = 0;
 
         for (let i = 0; i < particleCount; i++) {
             const material = new THREE.MeshBasicMaterial({ color: particleColor });
@@ -98,12 +110,10 @@ const Canvas = () => {
         const { clientWidth, clientHeight } = container;
         const aspect = clientWidth / clientHeight;
 
-        console.log("Container dimensions: ", clientWidth, clientHeight);
+        camera = new THREE.PerspectiveCamera(75, aspect, 1, 1000);
+        camera.position.z = 620;
 
-        camera = new THREE.PerspectiveCamera(75, aspect, 1, 10000);
-        camera.position.z = 750;
-
-        renderer = new THREE.WebGLRenderer();
+        renderer = new THREE.WebGLRenderer({antialias: true});
         renderer.setSize(clientWidth, clientHeight);
         containerRef.current.appendChild(renderer.domElement);
 
