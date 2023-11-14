@@ -4,13 +4,13 @@ const HomePage = ({ isVisible }) => {
     <section className={`page ${isVisible ? "visible" : "hidden"}`} data-page="Home">
         <div className="contenido_pagina home">
             <p className="home_sobremi">
-                <span>Nacido en 2001</span>
+                <span>Born in 2001</span>
                 <span>Buenos Aires, Argentina.</span>
-                <span>Mi misión es alcanzar</span>
-                <span>la máxima expresión</span>
-                <span>posible de las</span>
-                <span>capacidades humanas.</span>
-                <span>Modular y tenaz.</span>
+                <span>My mision is to excel</span>
+                <span>in all realms of</span>
+                <span>human endeavor.</span>
+                <span>Building the future</span>
+                <span>one step at a time.</span>
             </p>
         </div>
     </section>

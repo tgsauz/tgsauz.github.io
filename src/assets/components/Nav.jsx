@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const tabsData = [
   { name: "Home", sectionId: "home" },
-  { name: "Proyects", sectionId: "proyects" },
+  { name: "Projects", sectionId: "projects" },
   { name: "Info", sectionId: "info" },
   { name: "Contact", sectionId: "contact" },
 ];
