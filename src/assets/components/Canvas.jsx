@@ -12,8 +12,6 @@ const Canvas = () => {
     const colorBgB = 0xD0D0D;
     const colorTextW = 0xF2F2F2;
 
-    const maxDistance = 100;
-    const maxReturnDistance = 50;
     const attractFactor = 0.1;
     const returnFactor = 0.1;
 
@@ -38,10 +36,7 @@ const Canvas = () => {
 
         const ratioX = clientWidth / clientHeight;
 
-        const ratioY = clientHeight / clientWidth;
-        //Falta ajustar la lectura del mouse para una ilustracion mejor
-        //mouseX = (event.clientX - canvasRect.left);
-        //mouseY = -(event.clientY - canvasRect.top) ;    
+        const ratioY = clientHeight / clientWidth;  
 
         mouseX = (event.clientX - canvasRect.left - (clientWidth / 2));
         mouseY = -(event.clientY - canvasRect.top - (clientHeight / 2));
