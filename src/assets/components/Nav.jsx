@@ -7,8 +7,13 @@ const tabsData = [
   { name: "Contact", sectionId: "contact" },
 ];
 
-const Nav = ({ selectedTab, onTabChange }) => {
+const Nav = ({ onTabChange }) => {
+    const [selectedTab, setSelectedTab] = useState(null);
 
+    const handleTabChange = (sectionId) => {
+        setSelectedTab(sectionId);
+        onTabChange(sectionId);
+    }
   return (
     <header className="encabezado" id="Encabezado">
       <h1 className="encabezadoTitulo">Tomás E. Gandulfo</h1>
@@ -19,9 +24,11 @@ const Nav = ({ selectedTab, onTabChange }) => {
             <li key={tab.sectionId}>
               <div
                 className={`_texto-container ${selectedTab === tab.sectionId ? 'is-selected' : ''}`}
-                onClick={() => onTabChange(tab.sectionId)}
+                onClick={() => {
+                  handleTabChange(tab.sectionId, tab.name);
+                }}
               >
-                {selectedTab === tab.sectionId && <div className="circle">●</div>}
+                {selectedTab === tab.sectionId && (<div className={`circle ${selectedTab === tab.sectionId ? "active" : ""}`}>●</div>)}
                 <a
                   className="_texto"
                   href={tab.url ? tab.url : `#${tab.sectionId}`}

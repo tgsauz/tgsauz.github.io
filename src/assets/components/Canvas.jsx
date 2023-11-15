@@ -27,7 +27,7 @@ const Canvas = () => {
         particles.length = 0;
         
         createParticles();
-        console.log("Container dimensions: ", clientWidth, clientHeight);
+        //console.log("Container dimensions: ", clientWidth, clientHeight);
     };
     
     const onMouseMove = (event) => {
@@ -40,13 +40,13 @@ const Canvas = () => {
 
         mouseX = (event.clientX - canvasRect.left - (clientWidth / 2));
         mouseY = -(event.clientY - canvasRect.top - (clientHeight / 2));
-        console.log("RectX: ", canvasRect.left, clientWidth);
-        console.log("left-w: ", canvasRect.left - clientWidth);
-        console.log("RectY: ", canvasRect.top, clientHeight);
-        console.log("top-h: ", canvasRect.top - clientHeight);
-        console.log("RatioX: ", ratioX, "\nRatioY; ", ratioY);
+        //console.log("RectX: ", canvasRect.left, clientWidth);
+        //console.log("left-w: ", canvasRect.left - clientWidth);
+        //console.log("RectY: ", canvasRect.top, clientHeight);
+        //console.log("top-h: ", canvasRect.top - clientHeight);
+        //console.log("RatioX: ", ratioX, "\nRatioY; ", ratioY);
         
-        console.log(mouseX, mouseY);
+        //console.log(mouseX, mouseY);
     };
     
     const animate = () => {

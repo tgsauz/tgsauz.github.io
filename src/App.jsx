@@ -15,10 +15,10 @@ import "./assets/styles/Contact.css";
 import "./assets/styles/Canvas.css";
 
 const App = () => {
-  const [selectedTab, setSelectedTab] = useState("home");
+  const [selectedTab, onTabChange] = useState({ id: "home", name: "Home" });
 
-  const handleTabClick = (sectionId) => {
-    setSelectedTab(sectionId);
+  const handleTabClick = (sectionId, tabName) => {
+    onTabChange({ id: sectionId, name: tabName });
   };
 
 // Agregar visibilidad a CANVAS
@@ -27,10 +27,10 @@ const App = () => {
       <Nav onTabChange={handleTabClick} />
       <Canvas />
 
-      <HomePage isVisible={selectedTab === "home"} />
-      <Contact isVisible={selectedTab === "contact"} />
-      <Info isVisible={selectedTab === "info"} />
-      <NotFound isVisible={selectedTab === "notfound"} />
+      <HomePage isVisible={selectedTab.id === "home"} />
+      <Contact isVisible={selectedTab.id === "contact"} />
+      <Info isVisible={selectedTab.id === "info"} />
+      <NotFound isVisible={selectedTab.id === "notfound"} />
     </div>
   );
 }
