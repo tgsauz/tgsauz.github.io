@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react-swc';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/tgsauz.github.io/', // Cambia "nombre-repositorio" por tu nombre de repositorio en GitHub
+  base: '/', // Cambia "nombre-repositorio" por tu nombre de repositorio en GitHub
   build: {
     outDir: 'dist', // Carpeta de salida para los archivos construidos
     assetsDir: '', // Carpeta de activos (si está en la raíz)
