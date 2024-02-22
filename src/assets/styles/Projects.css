@@ -1,16 +1,18 @@
-.infos-list{
+.projects-list{
     position: absolute;
     bottom: calc(var(--pad)*2);
     right: calc(var(--pad)*2);
+    width: fit-content;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: 0 !important;
+    gap: 1.5rem;
+
+    color: var(--c-text);
 }
 
-.instagram, .linkedin, .github{
+.projects{
     text-decoration: none;
-    color: #fff;
+    color: var(--c-text);
     font-family: inherit;
     font-weight: 700;
     font-size: 15px;
@@ -21,6 +23,25 @@
     -moz-animation: glow 1s ease-in-out infinite alternate;
     animation: glow 1s ease-in-out infinite alternate;
 }
-.instagram:hover, .linkedin:hover, .github:hover{
+
+.projects:hover{
     text-shadow: 0 0 5px #fff;
+}
+
+.projects ul li h5{
+    font-family: Raleway;
+    font-weight: 300;
+    color: #fff;
+}
+
+.projects ul li p{
+    font-size: 1rem;
+    font-family: Raleway;
+    font-weight: 300;
+    color: var(--c-text);
+}
+
+span .highlight{
+    text-decoration: none;
+    color: var(--c-text);
 }

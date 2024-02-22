@@ -45,3 +45,6 @@ span{
     color: #fff;
     
 }
+p > :last-child{
+    margin-top: 1rem;
+}

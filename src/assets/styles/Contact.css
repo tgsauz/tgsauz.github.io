@@ -1,4 +1,28 @@
-.contact_{
-    color: #fff;
+.contact-list{
+    line-height: 1.5;
+    margin: inherit;
+    height: fit-content;
+    font-weight: 700;
+    white-space: none;
+    font-size: 15px;
+}
+
+.mail{
+    color: var(--c-text);
     font-weight: bolder;
+}
+
+.calendly{
+    text-decoration: none;
+    color: var(--c-text);
+    text-shadow: 0 0 0 transparent; /* Config inicial del glow */
+    transition: text-shadow 0.3s ease; /* Transición suave */
+
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+.calendly:hover{
+    text-shadow: 0 0 5px #fff;
 }

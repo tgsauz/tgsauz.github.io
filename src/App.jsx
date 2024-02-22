@@ -13,6 +13,9 @@ import "./assets/styles/HomePage.css";
 import "./assets/styles/Info.css";
 import "./assets/styles/Contact.css";
 import "./assets/styles/Canvas.css";
+import "./assets/styles/NotFound.css";
+import "./assets/styles/Projects.css";
+import Projects from "./assets/components/Projects.jsx";
 
 const App = () => {
   const [selectedTab, onTabChange] = useState({ id: "home", name: "Home" });
@@ -28,6 +31,7 @@ const App = () => {
       <Canvas />
 
       <HomePage isVisible={selectedTab.id === "home"} />
+      <Projects isVisible={selectedTab.id === "projects"} />
       <Contact isVisible={selectedTab.id === "contact"} />
       <Info isVisible={selectedTab.id === "info"} />
       <NotFound isVisible={selectedTab.id === "notfound"} />

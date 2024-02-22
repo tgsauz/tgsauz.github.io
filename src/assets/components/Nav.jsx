@@ -8,7 +8,7 @@ const tabsData = [
 ];
 
 const Nav = ({ onTabChange }) => {
-    const [selectedTab, setSelectedTab] = useState(null);
+    const [selectedTab, setSelectedTab] = useState("home");
 
     const handleTabChange = (sectionId) => {
         setSelectedTab(sectionId);
