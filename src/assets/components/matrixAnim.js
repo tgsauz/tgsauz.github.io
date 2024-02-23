@@ -1,5 +1,3 @@
-import * as THREE from 'three';
-
 export function startMatrixAnimation(container) {
     console.log('startMatrixAnimation called');
     let animationFrameId;
@@ -15,8 +13,6 @@ export function startMatrixAnimation(container) {
     const cBg = getComputedStyle(document.documentElement).getPropertyValue('--c-bg').trim();
     const cText = getComputedStyle(document.documentElement).getPropertyValue('--c-text').trim();
 
-    let stopCreatingNewDrops = false;
-    let fading = false;
     container.style.opacity = 1;
 
     const cover = document.createElement('div');
@@ -29,43 +25,63 @@ export function startMatrixAnimation(container) {
     cover.style.zIndex = 10;
     document.body.appendChild(cover);
 
+    let state = 'running';
 
     setTimeout(() => {
-        stopCreatingNewDrops = true;
+        state = 'stopping';
     }, 5000);
 
     setTimeout(() => {
-        fading = true;
+        state = 'fading';
     }, 6500);
 
+    function stopAnimation() {
+        console.log('stopAnimation called');
+        cancelAnimationFrame(animationFrameId);
+        context.clearRect(0, 0, container.width, container.height);
+        if (document.body.contains(cover)){
+            document.body.removeChild(cover);
+        }
+
+        const matrix = document.getElementById('matrix');
+        if (matrix && matrix.parentNode) {
+            console.log('Matrix found, removing...')
+            matrix.parentNode.removeChild(matrix);
+        } else {
+            console.log('Matrix not found');
+        }
+
+        const terminalWrapper = document.getElementById('terminal-wrapper');
+        if (terminalWrapper && terminalWrapper.parentNode) {
+            console.log('Terminal wrapper found, removing...')
+            terminalWrapper.parentNode.removeChild(terminalWrapper);
+        } else {
+            console.log('Terminal wrapper not found');
+        }
+    }
+
     function draw() {
-        
         context.fillStyle = 'rgba(0, 0, 0, 0.05)';
         context.fillRect(0, 0, container.width, container.height);
         context.fillStyle = cText;
         context.font = '1rem monospace';
-        
-        if (fading && container.style.opacity > 0) {
+
+        if (state === 'fading' && parseFloat(container.style.opacity) > 0) {
             container.style.opacity = parseFloat(container.style.opacity) - 0.01;
             cover.style.opacity = container.style.opacity;
+        } else if (state === 'fading' && parseFloat(container.style.opacity) <= 0) {
+            stopAnimation();
+            return;
         }
 
-        // console.log(drops);
-        // Draw each drop
         for (let i = 0; i < drops.length; i++) {
-            // console.log('inside each drop')
             const text = String.fromCharCode(Math.floor(Math.random() * 128));
-
-            // console.log(i * 10, drops[i] * 10)
-            // console.log(context.fillStyle)
             context.fillText(text, i * 10, drops[i] * 10);
 
-            // Randomly reset drop back to the top
-            if (!stopCreatingNewDrops && drops[i] * 10 >  container.height && Math.random() > 0.975) {
+            if (state === 'running' && drops[i] * 10 >  container.height && Math.random() > 0.975) {
                 drops[i] = 0;
             }
 
-            // Increment y coordinate
             drops[i]++;
         }
 
@@ -74,17 +90,5 @@ export function startMatrixAnimation(container) {
 
     draw();
 
-
-    return () => {
-        console.log('stopMatrixAnimation called');
-        cancelAnimationFrame(animationFrameId);
-        context.clearRect(0, 0, container.width, container.height);
-        document.body.removeChild(cover);
-
-        const terminal = document.querySelector('.terminal-wrapper');
-        const matrix = document.querySelector('.matrix');
-
-        if (terminal) terminal.parentNode.removeChild(terminal);
-        if (matrix) matrix.parentNode.removeChild(matrix);
-    }
+    return stopAnimation;
 }

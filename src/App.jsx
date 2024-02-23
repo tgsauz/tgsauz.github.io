@@ -16,7 +16,7 @@ import "./assets/styles/Canvas.css";
 import "./assets/styles/NotFound.css";
 import "./assets/styles/Projects.css";
 import Projects from "./assets/components/Projects.jsx";
-import Terminal from "./assets/components/typewriter.jsx";
+import Terminal from "./assets/components/Terminal.jsx";
 
 const App = () => {
 
