@@ -13,6 +13,7 @@
 @media (max-width: 480px) {
     .projects-list{
         transform : scale(0.8);
+        bottom: calc(var(--pad)*-0.7);
         right: calc(var(--pad)*-0.7);
     }
 }
@@ -20,6 +21,7 @@
 @media (max-width: 360px) {
     .projects-list{
         transform : scale(0.8);
+        bottom: calc(var(--pad)*-1.15);
         right: calc(var(--pad)*-1.15);
     }
 }
@@ -27,6 +29,7 @@
 @media (max-width: 340px) {
     .projects-list{
         transform : scale(0.65);
+        bottom: calc(var(--pad)*-3.25);
         right: calc(var(--pad)*-3.25);
     }
 
