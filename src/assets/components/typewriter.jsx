@@ -22,14 +22,11 @@ const Terminal = ({ onFinished }) => {
         'Welcome!^500',
     ];
 
-    const terminalWrapper = document.querySelector('.terminal-wrapper');
-
     useEffect(() => {
         const typed = new Typed(element.current, {
             strings: [messages.join("\n")],
             typeSpeed: 10,
-            showCursor: true,
-            cursorChar: "|",
+            showCursor: false,
             fadeOut: false,
             loop: false,
             onComplete: () => {
