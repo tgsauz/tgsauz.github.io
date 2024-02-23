@@ -8,7 +8,7 @@ const Projects = ({ isVisible }) => {
                         <a className='projects kazoovm' href='https://kazoovideo.com/' target="_blank" rel='noopener noreferrer'>
                             <h5>KazooVM's Website ↗</h5>
                         </a>
-                        <span>Comission.</span>
+                        <span>Commission.</span>
                     </li>
                     <li>
                         <a className='projects agendapy' href='https://github.com/tgsauz/CuzcoEstudio-Manager' target="_blank" rel='noopener noreferrer'>
@@ -20,13 +20,13 @@ const Projects = ({ isVisible }) => {
                         <a className="projects eda1" href='https://github.com/tgsauz/proyectofinalEDA1' target="_blank" rel='noopener noreferrer'>
                             <h5>EDA 1 ↗</h5>
                         </a>
-                        <span>Final proyect for <a className="highlight" href="https://web.upe.edu.ar/" target="_blank" rel="noopener noreferrer">UPE's</a> 'Data Structures and Algorithms I' class. </span>
+                        <span>Final project for <a className="highlight" href="https://web.upe.edu.ar/" target="_blank" rel="noopener noreferrer">UPE's</a> 'Data Structures and Algorithms I' class. </span>
                     </li>
                     <li>
                         <a className="projects eda2" href='https://github.com/tgsauz/proyectoEda2' target="_blank" rel='noopener noreferrer'>
                            <h5>EDA 2 ↗</h5>
                         </a>
-                        <span>Final proyect for <a className="highlight" href="https://web.upe.edu.ar/" target="_blank" rel="noopener noreferrer">UPE's</a> 'Data Structures and Algorithms II' class.</span>
+                        <span>Final project for <a className="highlight" href="https://web.upe.edu.ar/" target="_blank" rel="noopener noreferrer">UPE's</a> 'Data Structures and Algorithms II' class.</span>
                     </li>
                 </ul>
             </div>
