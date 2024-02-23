@@ -71,7 +71,6 @@ const Terminal = ({ onFinished }) => {
 
     useEffect(() => {
         if (typingFinished && canvasRef.current) {
-            console.log("canvasRef.current: ", canvasRef.current)
             const container = canvasRef.current;
             if (typeof window !== "undefined"){
                 container.width = window.innerWidth;

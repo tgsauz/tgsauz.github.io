@@ -1,8 +1,7 @@
 export function startMatrixAnimation(container) {
-    console.log('startMatrixAnimation called');
     let animationFrameId;
     const columns = container.width / 10;
-    console.log('columns: ', columns);
+
     const drops = [];
     const context = container.getContext('2d');
 
@@ -36,7 +35,6 @@ export function startMatrixAnimation(container) {
     }, 6500);
 
     function stopAnimation() {
-        console.log('stopAnimation called');
         cancelAnimationFrame(animationFrameId);
         context.clearRect(0, 0, container.width, container.height);
         if (document.body.contains(cover)){
@@ -45,18 +43,11 @@ export function startMatrixAnimation(container) {
 
         const matrix = document.getElementById('matrix');
         if (matrix && matrix.parentNode) {
-            console.log('Matrix found, removing...')
             matrix.parentNode.removeChild(matrix);
-        } else {
-            console.log('Matrix not found');
         }
-
         const terminalWrapper = document.getElementById('terminal-wrapper');
         if (terminalWrapper && terminalWrapper.parentNode) {
-            console.log('Terminal wrapper found, removing...')
             terminalWrapper.parentNode.removeChild(terminalWrapper);
-        } else {
-            console.log('Terminal wrapper not found');
         }
     }
 
