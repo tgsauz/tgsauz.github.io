@@ -1,0 +1,46 @@
+.terminal-wrapper{
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    white-space: pre-wrap;
+    z-index: 11;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.typed-cursor{
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 11;
+}
+
+.matrix{
+    font-family: 'Courier New', monospace;
+    font-size: 1.5em;
+    color: var(--c-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 11;
+}
+.matrix span {
+    position: absolute;
+    top: 0;
+    font-size: 20px;
+    color: var(--c-text);
+    text-shadow: 0 0 10px var(--c-text);
+    animation: matrix 1s linear infinite;
+}
+@keyframes matrix {
+    0% { top: -100%; }
+    100% { top: 100%; }
+}
+
+.hidden {
+    visibility: hidden;
+}

@@ -39,7 +39,7 @@
     top: calc(var(--pad)*1);
     width: fit-content;
     z-index: 5;
-    position: relative;
+    position: absolute;
     color: #fff;
     font-family: Raleway;
 }

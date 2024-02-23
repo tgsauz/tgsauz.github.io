@@ -16,9 +16,12 @@ import "./assets/styles/Canvas.css";
 import "./assets/styles/NotFound.css";
 import "./assets/styles/Projects.css";
 import Projects from "./assets/components/Projects.jsx";
+import Terminal from "./assets/components/typewriter.jsx";
 
 const App = () => {
+
   const [selectedTab, onTabChange] = useState({ id: "home", name: "Home" });
+  const [typingFinished, setTypingFinished] = useState(false);
 
   const handleTabClick = (sectionId, tabName) => {
     onTabChange({ id: sectionId, name: tabName });
@@ -27,14 +30,19 @@ const App = () => {
 // Agregar visibilidad a CANVAS
   return (
     <div className="page-content-container">
-      <Nav onTabChange={handleTabClick} />
-      <Canvas />
+      <Terminal onFinished={() => setTypingFinished(true)} />
+      {typingFinished && (
+        <>
+          <Nav onTabChange={handleTabClick} />
+          <Canvas />
 
-      <HomePage isVisible={selectedTab.id === "home"} />
-      <Projects isVisible={selectedTab.id === "projects"} />
-      <Contact isVisible={selectedTab.id === "contact"} />
-      <Info isVisible={selectedTab.id === "info"} />
-      <NotFound isVisible={selectedTab.id === "notfound"} />
+          <HomePage isVisible={selectedTab.id === "home"} />
+          <Projects isVisible={selectedTab.id === "projects"} />
+          <Contact isVisible={selectedTab.id === "contact"} />
+          <Info isVisible={selectedTab.id === "info"} />
+          <NotFound isVisible={selectedTab.id === "notfound"} />
+        </>
+      )}
     </div>
   );
 }

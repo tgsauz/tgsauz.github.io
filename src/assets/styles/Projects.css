@@ -6,8 +6,30 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-
     color: var(--c-text);
+    transform: scale(1);
+}
+
+@media (max-width: 480px) {
+    .projects-list{
+        transform : scale(0.8);
+        right: calc(var(--pad)*-0.7);
+    }
+}
+
+@media (max-width: 360px) {
+    .projects-list{
+        transform : scale(0.8);
+        right: calc(var(--pad)*-1.15);
+    }
+}
+
+@media (max-width: 340px) {
+    .projects-list{
+        transform : scale(0.65);
+        right: calc(var(--pad)*-3.25);
+    }
+
 }
 
 .projects{

@@ -17,7 +17,7 @@ const Nav = ({ onTabChange }) => {
   return (
     <header className="encabezado" id="Encabezado">
       <h1 className="encabezadoTitulo">Tomás E. Gandulfo</h1>
-      <p className="encabezadoSubtitulo">Developer</p>
+      <p className="encabezadoSubtitulo">Developer & Designer</p>
       <nav className="encabezado_nav">
         <ol>
           {tabsData.map((tab) => (
