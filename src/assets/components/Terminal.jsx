@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import Typed from "typed.js";
 import { startMatrixAnimation } from "./matrixAnim.js";
 
 import "../styles/Terminal.css";
@@ -13,56 +12,59 @@ const Terminal = ({ onFinished }) => {
     const canvasRef = useRef(null);
 
     const messages = [
-        'initializing system^250',
-        'entering the kernel^200.^200.^200.',
-        'accessing mainframe^500',
-        'decrypting data files^500.^500.^500.',
-        'loading modules^200.^200.^200.',
-        'starting application^150',
-        'Welcome!^500',
+       { text: 'initializing system', delay: 500 },
+       { text: 'finding the repository', delay: 0 },
+       { text: 'connecting to tgsauz\'s server', delay: 0 },
+       { text: 'accessing tgsauz\'s memory', delay: 0 },
+       { text: 'decrypting cuzco\'s database', delay: 500 },
+       { text: 'loading resources...', delay: 250 },
+       { text: 'the milky\'s blessing is missing', delay: 0 },
+       { text: 'continuing anyways...', delay: 0 },
+       { text: 'loading modules', delay: 0 },
+       { text: 'starting application', delay: 0 },
+       { text: 'waiting for chalo\'s approval', delay: 500 },
+       { text: 'chalo\'s approval granted', delay: 0 },
+       { text: 'chalo: "Sapeeeee"', delay: 0 },
+       { text: 'Welcome!', delay: 0 },
     ];
 
-    const [currentText, setCurrentText] = useState("");
-    let index = 0;
+    let index = -1;
     let messageIndex = 0;
 
-    const typeNextCharacter = () => {
-        if (messageIndex === messages.length) return;
+    const [text, setText] = useState(""); // Add this state variable to store the entire text
 
-        const message = messages[messageIndex];
-        if (index < message.length) {
-            setCurrentText(prev => prev + message[index]);
-            index++;
-        } else {
-            messageIndex++;
-            index = 0;
+    useEffect(() => {
+        if (text.endsWith(messages[messages.length - 1].text + "\n█")) {
+            setTypingFinished(true);
+            onFinished(); // Call the onFinished prop when typing is finished
         }
+    }, [text]);
 
-        setTimeout(typeNextCharacter, 100); // 100ms delay
+    const typeNextCharacter = () => {
+        if (messageIndex >= messages.length) {
+            return;
+        }
+    
+        index++; // Increment index at the start of the function
 
+        const message = messages[messageIndex].text;
+        if (index < message.length) {
+            setText(prevText => prevText.replace(/█$/, '') + message[index] + '█'); // Append character to text and cursor
+        } else {
+            setText(prevText => prevText.replace(/█$/, '') + "\n█"); // Append newline to text and cursor
+            messageIndex++;
+            index = -1; // Reset index to -1
+            if (messageIndex < messages.length) { // Add this check
+                setTimeout(typeNextCharacter, messages[messageIndex].delay); // Use delay from message
+            }
+            return; // Return to prevent the next setTimeout call
+        }
+    
+        setTimeout(typeNextCharacter, 0); // 20ms delay
     };
 
     useEffect(() => {
         typeNextCharacter();
-    }, []);
-
-    useEffect(() => {
-        const typed = new Typed(element.current, {
-            strings: [messages.join("\n")],
-            typeSpeed: 10,
-            showCursor: false,
-            fadeOut: false,
-            loop: false,
-            onComplete: () => {
-                console.log("onComplete");
-                onFinished();
-                setTimeout(() => setTypingFinished(true), 100);
-            },
-        });
-
-        return () => {
-            typed.destroy();
-        };
     }, []);
 
     const stopMatrixAnimationRef = useRef(null);
@@ -71,8 +73,10 @@ const Terminal = ({ onFinished }) => {
         if (typingFinished && canvasRef.current) {
             console.log("canvasRef.current: ", canvasRef.current)
             const container = canvasRef.current;
-            container.width = window.innerWidth;
-            container.height = window.innerHeight;
+            if (typeof window !== "undefined"){
+                container.width = window.innerWidth;
+                container.height = window.innerHeight;
+            }
             stopMatrixAnimationRef.current = startMatrixAnimation(container);
         }
     }, [typingFinished]);
@@ -94,6 +98,7 @@ const Terminal = ({ onFinished }) => {
                 padding: "0.25rem",
                 fontFamily: "monospace",
             }} ref={element}>
+                {text}
             </div>
             <canvas ref={canvasRef} id="matrix" className="matrix" />
         </>
