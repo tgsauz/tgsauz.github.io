@@ -24,7 +24,6 @@ const Terminal = ({ onFinished }) => {
        { text: 'starting application', delay: 0 },
        { text: 'waiting for chalo\'s approval', delay: 500 },
        { text: 'chalo\'s approval granted', delay: 0 },
-       { text: 'chalo: "Sapeeeee"', delay: 0 },
        { text: 'Welcome!', delay: 0 },
     ];
 
